@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 import { Link, Outlet, useLocation } from "react-router-dom"
+import { Badge } from "./ui/badge"
 
 const Layout = () => {
   const location = useLocation()
@@ -29,6 +30,7 @@ const Layout = () => {
       name: "お知らせ",
       path: "#",
       icon: "/icons/icon_info.svg",
+      notification: "1",
     },
   ]
 
@@ -116,11 +118,18 @@ const Layout = () => {
                       : "text-light hover:text-primary-400"
                   }`}
                 >
-                  <img
-                    src={menu.icon}
-                    alt={menu.name}
-                    className="size- mr-[8px]"
-                  />
+                  <div className="relative">
+                    <img
+                      src={menu.icon}
+                      alt={menu.name}
+                      className="size- mr-[8px]"
+                    />
+                    {menu.notification && (
+                      <Badge className="absolute top-0 right-0">
+                        {menu.notification}
+                      </Badge>
+                    )}
+                  </div>
                   {menu.name}
                 </Link>
               ))}

@@ -56,6 +56,7 @@ export default {
         "primary-300": "#FFCC21",
         "primary-400": "#FF963C",
         "primary-500": "#EA6100",
+        "primary-600": "#EA6C00",
         "gray-300": "#707070",
         "gray-400": "#777777",
         "dark-500": "#414141",
