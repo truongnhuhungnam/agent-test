@@ -161,12 +161,12 @@ const MyRecordPage = () => {
           id="my-diary"
           className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none text-dark-500"
         >
-          <CardHeader className="flex pt-6 pb-0 pl-6">
+          <CardHeader className="flex p-0">
             <h3 className="font-inter text-[22px] leading-[27px] tracking-[.151px]">
               MY DIARY
             </h3>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-0">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
               {visibleEntries.map((entry) => (
                 <div key={entry.id} className="p-4 border-2 border-gray-300">
@@ -183,7 +183,7 @@ const MyRecordPage = () => {
           </CardContent>
           {/* Load More Button */}
           {visibleDiaryEntries < diaryEntries.length && (
-            <CardFooter className="justify-center pt-6">
+            <CardFooter className="justify-center px-0 pt-6">
               <Button className="px-1 py-3 h-14 w-[296px]" onClick={loadMore}>
                 自分の日記をもっと見る
               </Button>
