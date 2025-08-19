@@ -16,11 +16,11 @@ const MyRecordPage = () => {
 
   return (
     <div className="min-h-screen pb-16 pt-14">
-      <div className="max-w-5xl px-4 lg:px-8 mx-auto space-y-8 lg:space-y-14">
+      <div className="max-w-5xl px-4 mx-auto space-y-8 lg:px-8 lg:space-y-14">
         {/* Action Buttons */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
           <div
-            className="p-4 lg:p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80"
+            className="p-4 transition-opacity cursor-pointer lg:p-6 bg-primary-300 hover:opacity-80"
             onClick={() => {
               const el = document.getElementById("body-record")
               if (el) {
@@ -45,7 +45,7 @@ const MyRecordPage = () => {
             </div>
           </div>
           <div
-            className="p-4 lg:p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80"
+            className="p-4 transition-opacity cursor-pointer lg:p-6 bg-primary-300 hover:opacity-80"
             onClick={() => {
               const el = document.getElementById("my-exercise")
               if (el) {
@@ -70,7 +70,7 @@ const MyRecordPage = () => {
             </div>
           </div>
           <div
-            className="p-4 lg:p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80 sm:col-span-2 lg:col-span-1"
+            className="p-4 transition-opacity cursor-pointer lg:p-6 bg-primary-300 hover:opacity-80 sm:col-span-2 lg:col-span-1"
             onClick={() => {
               const el = document.getElementById("my-diary")
               if (el) {
@@ -101,7 +101,7 @@ const MyRecordPage = () => {
           id="body-record"
           className="p-0 bg-dark-500 h-[250px] lg:h-[304px] overflow-hidden rounded-none border-0 gap-0 shadow-none"
         >
-          <CardHeader className="flex pt-4 lg:pt-6 pb-0 pl-4 lg:pl-6">
+          <CardHeader className="flex pt-4 pb-0 pl-4 lg:pt-6 lg:pl-6">
             <h3 className="text-light font-inter text-sm lg:text-[15px] leading-[16px] lg:leading-[18px] tracking-[.15px] w-[80px] lg:w-[96px]">
               BODY RECORD
             </h3>
@@ -119,7 +119,7 @@ const MyRecordPage = () => {
           id="my-exercise"
           className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none bg-dark-500"
         >
-          <CardHeader className="flex pt-3 lg:pt-4 pb-0 pl-4 lg:pl-6">
+          <CardHeader className="flex pt-3 pb-0 pl-4 lg:pt-4 lg:pl-6">
             <h3 className="text-light font-inter text-sm lg:text-[15px] leading-[16px] lg:leading-[18px] tracking-[.15px] w-[80px] lg:w-[96px]">
               MY EXERCISE
             </h3>
@@ -127,15 +127,15 @@ const MyRecordPage = () => {
               2021.05.21
             </p>
           </CardHeader>
-          <CardContent className="px-4 lg:px-6 pt-1 pb-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-auto gap-x-4 lg:gap-x-10 max-h-48">
+          <CardContent className="px-4 pt-1 pb-4 lg:px-6">
+            <div className="grid grid-cols-1 overflow-y-auto lg:grid-cols-2 gap-x-4 lg:gap-x-10 max-h-48">
               {exerciseRecords.map((exercise) => (
                 <div
                   key={exercise.id}
                   className="flex items-center justify-between py-[2px] pr-3 border-b border-gray-400"
                 >
                   <div className="flex items-center space-x-2 lg:space-x-4">
-                    <div className="rounded-full size-[5px] lg:size-[7px] bg-light"></div>
+                    <div className="-translate-y-2.5 rounded-full size-1 bg-light"></div>
                     <div>
                       <div className="font-light text-xs lg:text-[15px] leading-[16px] lg:leading-[22px] tracking-[.08px] text-light">
                         {exercise.name}
@@ -167,11 +167,11 @@ const MyRecordPage = () => {
             </h3>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {visibleEntries.map((entry) => (
                 <div
                   key={entry.id}
-                  className="p-3 lg:p-4 border-2 border-gray-300"
+                  className="p-3 pb-6 space-y-2 border-2 border-gray-300 lg:p-4 lg:pb-10"
                 >
                   <p className="text-base lg:text-[18px] font-inter leading-[20px] lg:leading-[22px] tracking-[.09px]">
                     {entry.date}
