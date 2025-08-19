@@ -57,20 +57,20 @@ const Layout = () => {
         {
           id: 5,
           name: "体重グラフ",
-          path: "/",
+          path: "#",
         },
-        { id: 6, name: "目標", path: "/" },
+        { id: 6, name: "目標", path: "#" },
         {
           id: 7,
           name: "選択中のコース",
-          path: "/",
+          path: "#",
         },
         {
           id: 8,
           name: "コラム一覧",
           path: "/column",
         },
-        { id: 9, name: "設定", path: "/" },
+        { id: 9, name: "設定", path: "#" },
       ]
     : [
         {
@@ -105,7 +105,7 @@ const Layout = () => {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       {/* Header */}
       <header className="bg-dark-500 fixed top-0 left-0 right-0 z-[50] shadow-[0_3px_6px_rgba(0,0,0,0.1608)]">
         <div className="max-w-5xl px-4 mx-auto lg:px-8">
@@ -297,7 +297,7 @@ const Layout = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 min-h-screen pb-16 mt-12 pt-14 lg:mt-16">
+      <main className="flex-1 pb-16 mt-12 min-h-fit pt-14 lg:mt-16">
         <Outlet />
       </main>
 
