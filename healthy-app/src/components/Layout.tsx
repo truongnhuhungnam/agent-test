@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 import { Badge } from "./ui/badge"
+import { useAuth } from "@/contexts/AuthContext"
 
 const Layout = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const { isAuthenticated, logout, user } = useAuth()
 
   const isActive = (path: string) => {
     return location.pathname === path
@@ -44,30 +47,38 @@ const Layout = () => {
   ]
 
   // Additional menu items for the dropdown
-  const dropdownMenus = [
-    {
-      id: 4,
-      name: "自分の記録",
-      path: "/record",
-    },
-    {
-      id: 5,
-      name: "体重グラフ",
-      path: "/",
-    },
-    { id: 6, name: "目標", path: "/" },
-    {
-      id: 7,
-      name: "選択中のコース",
-      path: "/",
-    },
-    {
-      id: 8,
-      name: "コラム一覧",
-      path: "/column",
-    },
-    { id: 9, name: "設定", path: "/" },
-  ]
+  const dropdownMenus = isAuthenticated
+    ? [
+        {
+          id: 4,
+          name: "自分の記録",
+          path: "/record",
+        },
+        {
+          id: 5,
+          name: "体重グラフ",
+          path: "/",
+        },
+        { id: 6, name: "目標", path: "/" },
+        {
+          id: 7,
+          name: "選択中のコース",
+          path: "/",
+        },
+        {
+          id: 8,
+          name: "コラム一覧",
+          path: "/column",
+        },
+        { id: 9, name: "設定", path: "/" },
+      ]
+    : [
+        {
+          id: 8,
+          name: "コラム一覧",
+          path: "/column",
+        },
+      ]
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -85,6 +96,12 @@ const Layout = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleLogout = () => {
+    logout()
+    setIsMenuOpen(false)
+    navigate("/column")
   }
 
   return (
@@ -110,31 +127,47 @@ const Layout = () => {
             <nav className="flex items-center">
               {/* Desktop Navigation */}
               <div className="items-center hidden md:flex">
-                {menus.map((menu) => (
-                  <Link
-                    key={menu.id}
-                    to={menu.path}
-                    className={`flex items-center pl-2 pr-4 py-2 text-sm lg:text-base font-light transition-colors w-32 lg:w-40 ${
-                      isActive(menu.path)
-                        ? "text-primary-400"
-                        : "text-light hover:text-primary-400"
-                    }`}
-                  >
-                    <div className="relative">
-                      <img
-                        src={menu.icon}
-                        alt={menu.name}
-                        className="size-5 lg:size-6 mr-[6px] lg:mr-[8px]"
-                      />
-                      {menu.notification && (
-                        <Badge className="absolute text-xs -top-1 -right-1">
-                          {menu.notification}
-                        </Badge>
-                      )}
+                {isAuthenticated ? (
+                  <>
+                    {menus.map((menu) => (
+                      <Link
+                        key={menu.id}
+                        to={menu.path}
+                        className={`flex items-center pl-2 pr-4 py-2 text-sm lg:text-base font-light transition-colors w-32 lg:w-40 ${
+                          isActive(menu.path)
+                            ? "text-primary-400"
+                            : "text-light hover:text-primary-400"
+                        }`}
+                      >
+                        <div className="relative">
+                          <img
+                            src={menu.icon}
+                            alt={menu.name}
+                            className="size-5 lg:size-6 mr-[6px] lg:mr-[8px]"
+                          />
+                          {menu.notification && (
+                            <Badge className="absolute text-xs -top-1 -right-1">
+                              {menu.notification}
+                            </Badge>
+                          )}
+                        </div>
+                        <span className="hidden lg:inline">{menu.name}</span>
+                      </Link>
+                    ))}
+                    <div className="flex items-center py-2 pl-2 pr-4 text-sm font-light lg:text-base text-primary-300">
+                      <span className="hidden lg:inline">
+                        Welcome, {user?.username}
+                      </span>
                     </div>
-                    <span className="hidden lg:inline">{menu.name}</span>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center py-2 pl-2 pr-4 text-sm font-light transition-colors lg:text-base text-light hover:text-primary-400"
+                  >
+                    <span>Login</span>
                   </Link>
-                ))}
+                )}
               </div>
 
               {/* Menu button with dropdown */}
@@ -168,12 +201,29 @@ const Layout = () => {
                         <Link
                           key={menu.id}
                           to={menu.path}
-                          className="flex items-center px-6 lg:px-8 py-[18px] lg:py-[23px] text-base lg:text-lg font-light text-light border-t border-b hover:bg-dark-600/25 transition-colors border-t-light/15 border-b-dark-600/25 last:border-b-0"
+                          className="flex items-center px-6 lg:px-8 py-[18px] lg:py-[23px] text-base lg:text-lg font-light text-light border-t border-b hover:bg-dark-600/25 transition-colors border-t-light/15 border-b-dark-600/25"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {menu.name}
                         </Link>
                       ))}
+                      {isAuthenticated && (
+                        <button
+                          onClick={handleLogout}
+                          className="flex items-center w-full px-6 lg:px-8 py-[18px] lg:py-[23px] text-base lg:text-lg font-light text-primary-400 border-t hover:bg-dark-600/25 transition-colors border-t-light/15"
+                        >
+                          Logout
+                        </button>
+                      )}
+                      {!isAuthenticated && (
+                        <Link
+                          to="/login"
+                          className="flex items-center px-6 lg:px-8 py-[18px] lg:py-[23px] text-base lg:text-lg font-light text-primary-400 border-t hover:bg-dark-600/25 transition-colors border-t-light/15"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Login
+                        </Link>
+                      )}
                     </div>
                   </div>
                 )}
@@ -189,21 +239,37 @@ const Layout = () => {
           }`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 bg-dark-600">
-            {menus.map((menu) => (
+            {isAuthenticated ? (
+              <>
+                {menus.map((menu) => (
+                  <Link
+                    key={menu.id}
+                    to={menu.path}
+                    className={`flex items-center px-3 py-2 text-sm font-medium transition-colors ${
+                      isActive(menu.path)
+                        ? "text-primary-300 bg-dark-500"
+                        : "text-light hover:text-primary-300 hover:bg-dark-500"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <img
+                      src={menu.icon}
+                      alt={menu.name}
+                      className="mr-3 size-5"
+                    />
+                    {menu.name}
+                  </Link>
+                ))}
+              </>
+            ) : (
               <Link
-                key={menu.id}
-                to={menu.path}
-                className={`flex items-center px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive(menu.path)
-                    ? "text-primary-300 bg-dark-500"
-                    : "text-light hover:text-primary-300 hover:bg-dark-500"
-                }`}
+                to="/login"
+                className="flex items-center px-3 py-2 text-sm font-medium transition-colors text-light hover:text-primary-300 hover:bg-dark-500"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <img src={menu.icon} alt={menu.name} className="mr-3 size-5" />
-                {menu.name}
+                Login
               </Link>
-            ))}
+            )}
 
             {/* Additional mobile menu items */}
             <div className="pt-2 mt-2 border-t border-gray-400/20">
@@ -217,13 +283,21 @@ const Layout = () => {
                   {menu.name}
                 </Link>
               ))}
+              {isAuthenticated && (
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center w-full px-3 py-2 text-sm font-medium transition-colors text-primary-400 hover:text-primary-300 hover:bg-dark-500"
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 mt-12 lg:mt-16">
+      <main className="flex-1 min-h-screen pb-16 mt-12 pt-14 lg:mt-16">
         <Outlet />
       </main>
 
