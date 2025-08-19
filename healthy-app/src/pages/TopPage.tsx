@@ -10,7 +10,7 @@ const TopPage = () => {
   const recentMeals = mealRecords.slice(0, 8)
 
   return (
-    <div className="pb-16">
+    <div className="min-h-screen pb-16">
       {/* Hero Section */}
       <div className="flex">
         {/* Achievement Rate Chart */}

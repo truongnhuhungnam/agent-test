@@ -12,17 +12,22 @@ const Layout = () => {
   }
 
   const menus = [
-    { id: 1, name: "自分の記録", path: "/", icon: "/icons/icon_memo.svg" },
+    {
+      id: 1,
+      name: "自分の記録",
+      path: "/record",
+      icon: "/icons/icon_memo.svg",
+    },
     {
       id: 2,
       name: "チャレンジ",
-      path: "/record",
+      path: "#",
       icon: "/icons/icon_challenge.svg",
     },
     {
       id: 3,
       name: "お知らせ",
-      path: "/column",
+      path: "#",
       icon: "/icons/icon_info.svg",
     },
   ]
@@ -41,7 +46,7 @@ const Layout = () => {
     {
       id: 4,
       name: "自分の記録",
-      path: "/",
+      path: "/record",
     },
     {
       id: 5,
