@@ -90,7 +90,7 @@ const Layout = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="relative bg-dark-600">
+      <header className="bg-dark-500 fixed top-0 left-0 right-0 z-[50] shadow-[0_3px_6px_rgba(0,0,0,0.1608)]">
         <div className="max-w-5xl px-8 mx-auto">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -220,7 +220,7 @@ const Layout = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 mt-16">
         <Outlet />
       </main>
 

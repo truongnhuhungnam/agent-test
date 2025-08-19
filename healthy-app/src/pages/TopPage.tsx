@@ -66,7 +66,7 @@ const TopPage = () => {
         </Card>
 
         {/* Body Weight Chart */}
-        <Card className="p-0 bg-dark-500 w-[57.812vw] h-[312px] overflow-hidden rounded-none border-0 shadow-none">
+        <Card className="p-0 bg-dark-600 w-[57.812vw] h-[312px] overflow-hidden rounded-none border-0 shadow-none">
           <CardContent className="h-full px-16 py-3">
             <BodyWeightChart data={bodyRecords} />
           </CardContent>
