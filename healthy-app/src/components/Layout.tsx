@@ -88,7 +88,7 @@ const Layout = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       {/* Header */}
       <header className="bg-dark-500 fixed top-0 left-0 right-0 z-[50] shadow-[0_3px_6px_rgba(0,0,0,0.1608)]">
         <div className="max-w-5xl px-4 mx-auto lg:px-8">
