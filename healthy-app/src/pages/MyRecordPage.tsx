@@ -2,9 +2,18 @@ import BodyWeightChart from "@/components/BodyWeightChart"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { bodyRecords, diaryEntries, exerciseRecords } from "@/data/mockData"
-import { Link } from "react-router-dom"
+import { useState } from "react"
 
 const MyRecordPage = () => {
+  const [visibleDiaryEntries, setVisibleDiaryEntries] = useState(8)
+
+  const loadMore = () => {
+    setVisibleDiaryEntries((prev) => Math.min(prev + 8, diaryEntries.length))
+  }
+
+  // Get visible diary entries
+  const visibleEntries = diaryEntries.slice(0, visibleDiaryEntries)
+
   return (
     <div className="min-h-screen pb-16 pt-14">
       <div className="max-w-5xl px-8 mx-auto space-y-14">
@@ -159,7 +168,7 @@ const MyRecordPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
-              {diaryEntries.map((entry) => (
+              {visibleEntries.map((entry) => (
                 <div key={entry.id} className="p-4 border-2 border-gray-300">
                   <p className="text-[18px] font-inter leading-[22px] tracking-[.09px]">
                     {entry.date}
@@ -172,11 +181,14 @@ const MyRecordPage = () => {
               ))}
             </div>
           </CardContent>
-          <CardFooter className="justify-center pt-6">
-            <Button className="px-1 py-3 h-14 w-[296px]" asChild>
-              <Link to="#">自分の日記をもっと見る</Link>
-            </Button>
-          </CardFooter>
+          {/* Load More Button */}
+          {visibleDiaryEntries < diaryEntries.length && (
+            <CardFooter className="justify-center pt-6">
+              <Button className="px-1 py-3 h-14 w-[296px]" onClick={loadMore}>
+                自分の日記をもっと見る
+              </Button>
+            </CardFooter>
+          )}
         </Card>
       </div>
     </div>

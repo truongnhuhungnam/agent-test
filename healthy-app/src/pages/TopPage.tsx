@@ -1,13 +1,30 @@
+import BodyWeightChart from "@/components/BodyWeightChart"
+import CircularProgress from "@/components/CircularProgress"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { bodyRecords, mealRecords } from "@/data/mockData"
-import CircularProgress from "@/components/CircularProgress"
-import BodyWeightChart from "@/components/BodyWeightChart"
-import { Link } from "react-router-dom"
+import { useState } from "react"
 
 const TopPage = () => {
-  // Get recent meal records (last 8)
-  const recentMeals = mealRecords.slice(0, 8)
+  const [visibleMeals, setVisibleMeals] = useState(8)
+  const [selectedMealType, setSelectedMealType] = useState<string | null>(null)
+
+  const loadMore = () => {
+    setVisibleMeals((prev) => Math.min(prev + 8, filteredMealRecords.length))
+  }
+
+  // Filter meals by selected type
+  const filteredMealRecords = selectedMealType
+    ? mealRecords.filter((meal) => meal.type === selectedMealType)
+    : mealRecords
+
+  // Get visible meal records
+  const visibleMealRecords = filteredMealRecords.slice(0, visibleMeals)
+
+  const handleMealTypeFilter = (mealType: string) => {
+    setSelectedMealType(selectedMealType === mealType ? null : mealType)
+    setVisibleMeals(8) // Reset to show first 8 meals
+  }
 
   return (
     <div className="min-h-screen pb-16">
@@ -59,7 +76,13 @@ const TopPage = () => {
       {/* Action Buttons */}
       <div className="p-6">
         <div className="flex justify-center gap-16 mb-8">
-          <Button variant="hexagon">
+          <Button
+            variant="hexagon"
+            onClick={() => handleMealTypeFilter("morning")}
+            className={
+              selectedMealType === "morning" ? "ring-2 ring-primary-300" : ""
+            }
+          >
             <div className="relative flex flex-col items-center z-[1]">
               <div className="mb-1 text-2xl">
                 <img
@@ -71,7 +94,13 @@ const TopPage = () => {
               <span className="text-xl leading-6">Morning</span>
             </div>
           </Button>
-          <Button variant="hexagon">
+          <Button
+            variant="hexagon"
+            onClick={() => handleMealTypeFilter("lunch")}
+            className={
+              selectedMealType === "lunch" ? "ring-2 ring-primary-300" : ""
+            }
+          >
             <div className="relative flex flex-col items-center z-[1]">
               <div className="mb-1 text-2xl">
                 <img
@@ -83,7 +112,13 @@ const TopPage = () => {
               <span className="text-xl leading-6">Lunch</span>
             </div>
           </Button>
-          <Button variant="hexagon">
+          <Button
+            variant="hexagon"
+            onClick={() => handleMealTypeFilter("dinner")}
+            className={
+              selectedMealType === "dinner" ? "ring-2 ring-primary-300" : ""
+            }
+          >
             <div className="relative flex flex-col items-center z-[1]">
               <div className="mb-1 text-2xl">
                 <img
@@ -95,7 +130,13 @@ const TopPage = () => {
               <span className="text-xl leading-6">Dinner</span>
             </div>
           </Button>
-          <Button variant="hexagon">
+          <Button
+            variant="hexagon"
+            onClick={() => handleMealTypeFilter("snack")}
+            className={
+              selectedMealType === "snack" ? "ring-2 ring-primary-300" : ""
+            }
+          >
             <div className="relative flex flex-col items-center z-[1]">
               <div className="mb-1 text-2xl">
                 <img
@@ -115,7 +156,7 @@ const TopPage = () => {
         <Card className="p-0 border-0 rounded-none shadow-none gap-7">
           <CardContent className="p-0">
             <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-              {recentMeals.map((meal) => (
+              {visibleMealRecords.map((meal) => (
                 <div key={meal.id} className="relative text-center">
                   <div className="overflow-hidden aspect-square">
                     <img
@@ -139,11 +180,14 @@ const TopPage = () => {
               ))}
             </div>
           </CardContent>
-          <CardFooter className="justify-center p-0">
-            <Button className="px-1 py-3 h-14 w-[296px]">
-              <Link to="/record">記録をもっと見る</Link>
-            </Button>
-          </CardFooter>
+          {/* Load More Button */}
+          {visibleMeals < filteredMealRecords.length && (
+            <CardFooter className="justify-center p-0">
+              <Button className="px-1 py-3 h-14 w-[296px]" onClick={loadMore}>
+                記録をもっと見る
+              </Button>
+            </CardFooter>
+          )}
         </Card>
       </div>
     </div>
