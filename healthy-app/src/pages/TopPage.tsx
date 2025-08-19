@@ -124,7 +124,7 @@ const TopPage = () => {
                       className="object-cover w-full h-full transition-all cursor-pointer hover:scale-105"
                     />
                   </div>
-                  <div className="text-[15px] text-white bg-primary-300 font-inter absolute bottom-0 left-0 p-2">
+                  <div className="text-[15px] text-light bg-primary-300 font-inter absolute bottom-0 left-0 p-2">
                     <span>
                       {new Date(meal.date)
                         .toLocaleDateString("en-US", {

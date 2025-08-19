@@ -34,6 +34,7 @@ export interface ColumnArticle {
   title: string
   image: string
   date: string
+  time: string
   tags: string[]
 }
 
@@ -295,6 +296,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリット",
     image: "/photo/column-1.jpg",
     date: "2021.05.17",
+    time: "23:25",
     tags: ["魚料理", "和食", "DHA"],
   },
   {
@@ -302,6 +304,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "野菜を食べて健康的な生活を送ろう！野菜の栄養と効果的な摂取方法",
     image: "/photo/column-2.jpg",
     date: "2021.05.16",
+    time: "23:25",
     tags: ["野菜", "栄養", "ビタミン"],
   },
   {
@@ -309,6 +312,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "適度な運動で健康維持！無理なく続けられる運動習慣のコツ",
     image: "/photo/column-3.jpg",
     date: "2021.05.15",
+    time: "23:25",
     tags: ["運動", "健康", "フィットネス"],
   },
   {
@@ -316,6 +320,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "良質な睡眠で疲労回復！睡眠の質を向上させる方法",
     image: "/photo/column-4.jpg",
     date: "2021.05.14",
+    time: "23:25",
     tags: ["睡眠", "疲労回復", "健康"],
   },
   {
@@ -323,6 +328,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "水分補給の重要性！正しい水分摂取で健康をサポート",
     image: "/photo/column-5.jpg",
     date: "2021.05.13",
+    time: "23:25",
     tags: ["水分補給", "健康", "デトックス"],
   },
   {
@@ -330,6 +336,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "ストレス解消法で心も体も健康に！効果的なリラックス方法",
     image: "/photo/column-6.jpg",
     date: "2021.05.12",
+    time: "23:25",
     tags: ["ストレス", "リラックス", "メンタルヘルス"],
   },
   {
@@ -337,6 +344,7 @@ export const columnArticles: ColumnArticle[] = [
     title: "腸内環境を整えて免疫力アップ！発酵食品の効果と取り入れ方",
     image: "/photo/column-7.jpg",
     date: "2021.05.11",
+    time: "23:25",
     tags: ["腸内環境", "発酵食品", "免疫力"],
   },
   {
@@ -344,6 +352,39 @@ export const columnArticles: ColumnArticle[] = [
     title: "アンチエイジングに効果的な食材！若々しさを保つ食事のコツ",
     image: "/photo/column-8.jpg",
     date: "2021.05.10",
+    time: "23:25",
+    tags: ["アンチエイジング", "美容", "栄養"],
+  },
+  {
+    id: "9",
+    title: "水分補給の重要性！正しい水分摂取で健康をサポート",
+    image: "/photo/column-5.jpg",
+    date: "2021.05.13",
+    time: "23:25",
+    tags: ["水分補給", "健康", "デトックス"],
+  },
+  {
+    id: "10",
+    title: "ストレス解消法で心も体も健康に！効果的なリラックス方法",
+    image: "/photo/column-6.jpg",
+    date: "2021.05.12",
+    time: "23:25",
+    tags: ["ストレス", "リラックス", "メンタルヘルス"],
+  },
+  {
+    id: "11",
+    title: "腸内環境を整えて免疫力アップ！発酵食品の効果と取り入れ方",
+    image: "/photo/column-7.jpg",
+    date: "2021.05.11",
+    time: "23:25",
+    tags: ["腸内環境", "発酵食品", "免疫力"],
+  },
+  {
+    id: "12",
+    title: "アンチエイジングに効果的な食材！若々しさを保つ食事のコツ",
+    image: "/photo/column-8.jpg",
+    date: "2021.05.10",
+    time: "23:25",
     tags: ["アンチエイジング", "美容", "栄養"],
   },
 ]
