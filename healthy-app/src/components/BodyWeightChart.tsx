@@ -171,8 +171,8 @@ const BodyWeightChart: React.FC<BodyWeightChartProps> = ({ data, sort }) => {
               onClick={() => setSelectedPeriod(period)}
               className={`px-4 py-[1px] rounded-full transition-colors font-light text-[15px] leading-[22px] tracking-[.08px] w-[56px] ${
                 selectedPeriod === period
-                  ? "bg-[#FFCC21] text-white"
-                  : "bg-white text-primary-300"
+                  ? "bg-primary-300 text-white"
+                  : "bg-white text-primary-300 hover:bg-primary-300 hover:text-white"
               }`}
             >
               {period}
