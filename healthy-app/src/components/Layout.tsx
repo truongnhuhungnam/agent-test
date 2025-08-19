@@ -226,7 +226,7 @@ const Layout = () => {
 
       {/* Footer */}
       <div
-        className="fixed z-50 transition-opacity cursor-pointer bottom-1/2 right-16 hover:opacity-80"
+        className="fixed z-50 transition-opacity cursor-pointer bottom-1/3 right-16 hover:opacity-80"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <img

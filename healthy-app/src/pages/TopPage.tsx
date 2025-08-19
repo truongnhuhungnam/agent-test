@@ -162,7 +162,7 @@ const TopPage = () => {
                     <img
                       src={meal.image}
                       alt={`Meal ${meal.id}`}
-                      className="object-cover w-full h-full transition-all cursor-pointer hover:scale-105"
+                      className="object-cover w-full h-full transition-transform cursor-pointer hover:scale-105"
                     />
                   </div>
                   <div className="text-[15px] text-light bg-primary-300 font-inter absolute bottom-0 left-0 p-2">
