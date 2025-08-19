@@ -8,7 +8,7 @@ const ColumnPage = () => {
   const [visibleArticles, setVisibleArticles] = useState(8)
 
   const loadMore = () => {
-    setVisibleArticles((prev) => Math.min(prev + 4, columnArticles.length))
+    setVisibleArticles((prev) => Math.min(prev + 8, columnArticles.length))
   }
 
   return (
@@ -16,7 +16,7 @@ const ColumnPage = () => {
       <div className="max-w-5xl px-8 mx-auto space-y-14">
         {/* Recommended Articles */}
         <div className="grid grid-cols-4 gap-8">
-          <div className="px-2 py-6 text-center bg-dark-600">
+          <div className="px-2 py-6 text-center transition-opacity cursor-pointer bg-dark-600 hover:opacity-80">
             <h3 className="font-normal text-primary-300 text-[22px] leading-[27px] tracking-[.11px] font-inter mb-4 relative after:w-[56px] after:h-[1px] after:bg-light after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">
               RECOMMENDED COLUMN
             </h3>
@@ -24,7 +24,7 @@ const ColumnPage = () => {
               オススメ
             </p>
           </div>
-          <div className="px-2 py-6 text-center bg-dark-600">
+          <div className="px-2 py-6 text-center transition-opacity cursor-pointer bg-dark-600 hover:opacity-80">
             <h3 className="font-normal text-primary-300 text-[22px] leading-[27px] tracking-[.11px] font-inter mb-4 relative after:w-[56px] after:h-[1px] after:bg-light after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">
               RECOMMENDED DIET
             </h3>
@@ -32,13 +32,13 @@ const ColumnPage = () => {
               ダイエット
             </p>
           </div>
-          <div className="px-2 py-6 text-center bg-dark-600">
+          <div className="px-2 py-6 text-center transition-opacity cursor-pointer bg-dark-600 hover:opacity-80">
             <h3 className="font-normal text-primary-300 text-[22px] leading-[27px] tracking-[.11px] font-inter mb-4 relative after:w-[56px] after:h-[1px] after:bg-light after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">
               RECOMMENDED BEAUTY
             </h3>
             <p className="text-light text-lg leading-[26px] font-light">美容</p>
           </div>
-          <div className="px-2 py-6 text-center bg-dark-600">
+          <div className="px-2 py-6 text-center transition-opacity cursor-pointer bg-dark-600 hover:opacity-80">
             <h3 className="font-normal text-primary-300 text-[22px] leading-[27px] tracking-[.11px] font-inter mb-4 relative after:w-[56px] after:h-[1px] after:bg-light after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2">
               RECOMMENDED HEALTH
             </h3>
@@ -103,43 +103,6 @@ const ColumnPage = () => {
               </div>
             </div>
           )}
-        </div>
-
-        {/* Categories */}
-        <div className="mt-16">
-          <h2 className="mb-6 text-xl font-semibold text-light">カテゴリー</h2>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
-            {[
-              { name: "栄養・食事", count: 12, color: "bg-primary-300" },
-              { name: "運動・フィットネス", count: 8, color: "bg-primary-400" },
-              { name: "睡眠・休息", count: 6, color: "bg-primary-500" },
-              { name: "メンタルヘルス", count: 10, color: "bg-primary-300" },
-              {
-                name: "美容・アンチエイジング",
-                count: 7,
-                color: "bg-primary-400",
-              },
-              { name: "健康管理", count: 15, color: "bg-primary-500" },
-            ].map((category, index) => (
-              <Card
-                key={index}
-                className="transition-shadow cursor-pointer bg-dark-600 border-gray-400/20 hover:shadow-lg"
-              >
-                <CardContent className="p-4 text-center">
-                  <div
-                    className={`w-12 h-12 ${category.color} rounded-full mx-auto mb-3 flex items-center justify-center`}
-                  >
-                    <span className="text-lg font-bold text-dark-600">
-                      {category.count}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-medium text-light">
-                    {category.name}
-                  </h3>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </div>
     </div>
