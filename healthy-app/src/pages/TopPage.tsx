@@ -75,7 +75,7 @@ const TopPage = () => {
 
       {/* Action Buttons */}
       <div className="p-6">
-        <div className="flex justify-center gap-16 mb-8">
+        <div className="flex justify-center gap-16">
           <Button
             variant="hexagon"
             onClick={() => handleMealTypeFilter("morning")}
