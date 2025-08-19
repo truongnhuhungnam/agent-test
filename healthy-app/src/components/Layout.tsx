@@ -154,7 +154,7 @@ const Layout = () => {
                         <span className="hidden lg:inline">{menu.name}</span>
                       </Link>
                     ))}
-                    <div className="flex items-center py-2 pl-2 pr-4 text-sm font-light lg:text-base text-primary-300">
+                    <div className="flex items-center py-2 pl-2 pr-4 text-sm font-light lg:text-base text-light">
                       <span className="hidden lg:inline">
                         Welcome, {user?.username}
                       </span>
