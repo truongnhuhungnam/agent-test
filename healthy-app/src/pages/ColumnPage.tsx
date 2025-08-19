@@ -1,9 +1,9 @@
+import { AnimatedGrid, AnimatedGridItem } from "@/components/AnimatedGrid"
+import AnimatedButton from "@/components/AnimatedButton"
 import PageTransition from "@/components/PageTransition"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { columnArticles } from "@/data/mockData"
 import { useState } from "react"
-import { Link } from "react-router-dom"
 
 const ColumnPage = () => {
   const [visibleArticles, setVisibleArticles] = useState(8)
@@ -54,58 +54,56 @@ const ColumnPage = () => {
 
           {/* All Articles */}
           <div className="mb-8">
-            <div className="grid grid-cols-1 gap-x-2 gap-y-[18px] sm:grid-cols-2 lg:grid-cols-4">
+            <AnimatedGrid className="grid grid-cols-1 gap-x-2 gap-y-[18px] sm:grid-cols-2 lg:grid-cols-4">
               {columnArticles.slice(0, visibleArticles).map((article) => (
-                <Card
-                  key={article.id}
-                  className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none cursor-pointer"
-                >
-                  <div className="relative overflow-hidden h-[120px] sm:h-[144px]">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="object-cover w-full h-full transition-transform hover:scale-105"
-                    />
-                    <div className="text-xs lg:text-[15px] text-light leading-[20px] lg:leading-[24px] bg-primary-300 font-inter absolute bottom-0 left-0 px-2 inline-flex gap-2 lg:gap-4">
-                      <span>{article.date}</span>
-                      <span>{article.time}</span>
+                <AnimatedGridItem key={article.id}>
+                  <Card className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none cursor-pointer">
+                    <div className="relative overflow-hidden h-[120px] sm:h-[144px]">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="object-cover w-full h-full transition-transform hover:scale-105"
+                      />
+                      <div className="text-xs lg:text-[15px] text-light leading-[20px] lg:leading-[24px] bg-primary-300 font-inter absolute bottom-0 left-0 px-2 inline-flex gap-2 lg:gap-4">
+                        <span>{article.date}</span>
+                        <span>{article.time}</span>
+                      </div>
                     </div>
-                  </div>
-                  <CardContent className="text-dark-500 py-[6px] px-0">
-                    <h3 className="text-xs lg:text-[15px] font-light leading-[18px] lg:leading-[22px] tracking-[.08px] line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-1 lg:gap-2">
-                      {article.tags.slice(0, 3).map((tag, index) => (
-                        <span
-                          key={index}
-                          className="text-xs text-primary-400 leading-[18px] lg:leading-[22px] tracking-[.06px] font-light"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                      {article.tags.length > 3 && (
-                        <span className="text-xs text-gray-400">
-                          +{article.tags.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="text-dark-500 py-[6px] px-0">
+                      <h3 className="text-xs lg:text-[15px] font-light leading-[18px] lg:leading-[22px] tracking-[.08px] line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-1 lg:gap-2">
+                        {article.tags.slice(0, 3).map((tag, index) => (
+                          <span
+                            key={index}
+                            className="text-xs text-primary-400 leading-[18px] lg:leading-[22px] tracking-[.06px] font-light"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                        {article.tags.length > 3 && (
+                          <span className="text-xs text-gray-400">
+                            +{article.tags.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedGridItem>
               ))}
-            </div>
+            </AnimatedGrid>
 
             {/* Load More Button */}
             {visibleArticles < columnArticles.length && (
               <div className="text-center">
                 <div className="flex justify-center mt-[24px]">
-                  <Button
+                  <AnimatedButton
                     onClick={loadMore}
-                    className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base"
-                    asChild
+                    className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base bg-gradient-to-b from-primary-300 to-primary-400 text-light font-light rounded-sm transition-colors hover:from-primary-400 hover:to-primary-500"
                   >
-                    <Link to="#">コラムをもっと見る</Link>
-                  </Button>
+                    コラムをもっと見る
+                  </AnimatedButton>
                 </div>
               </div>
             )}

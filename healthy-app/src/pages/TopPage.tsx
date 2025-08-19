@@ -1,3 +1,5 @@
+import { AnimatedGrid, AnimatedGridItem } from "@/components/AnimatedGrid"
+import AnimatedButton from "@/components/AnimatedButton"
 import BodyWeightChart from "@/components/BodyWeightChart"
 import CircularProgress from "@/components/CircularProgress"
 import PageTransition from "@/components/PageTransition"
@@ -162,40 +164,42 @@ const TopPage = () => {
         <div className="max-w-5xl px-4 mx-auto lg:px-8">
           <Card className="p-0 border-0 rounded-none shadow-none gap-7">
             <CardContent className="p-0">
-              <div className="grid grid-cols-2 gap-1 lg:gap-2 md:grid-cols-4">
+              <AnimatedGrid className="grid grid-cols-2 gap-1 lg:gap-2 md:grid-cols-4">
                 {visibleMealRecords.map((meal) => (
-                  <div key={meal.id} className="relative text-center">
-                    <div className="overflow-hidden aspect-square">
-                      <img
-                        src={meal.image}
-                        alt={`Meal ${meal.id}`}
-                        className="object-cover w-full h-full transition-transform cursor-pointer hover:scale-105"
-                      />
+                  <AnimatedGridItem key={meal.id}>
+                    <div className="relative text-center">
+                      <div className="overflow-hidden aspect-square">
+                        <img
+                          src={meal.image}
+                          alt={`Meal ${meal.id}`}
+                          className="object-cover w-full h-full transition-transform cursor-pointer hover:scale-105"
+                        />
+                      </div>
+                      <div className="text-xs lg:text-[15px] text-light bg-primary-300 font-inter absolute bottom-0 left-0 p-1 lg:p-2">
+                        <span>
+                          {new Date(meal.date)
+                            .toLocaleDateString("en-US", {
+                              month: "2-digit",
+                              day: "2-digit",
+                            })
+                            .replace("/", ".")}
+                        </span>
+                        .<span className="capitalize">{meal.type}</span>
+                      </div>
                     </div>
-                    <div className="text-xs lg:text-[15px] text-light bg-primary-300 font-inter absolute bottom-0 left-0 p-1 lg:p-2">
-                      <span>
-                        {new Date(meal.date)
-                          .toLocaleDateString("en-US", {
-                            month: "2-digit",
-                            day: "2-digit",
-                          })
-                          .replace("/", ".")}
-                      </span>
-                      .<span className="capitalize">{meal.type}</span>
-                    </div>
-                  </div>
+                  </AnimatedGridItem>
                 ))}
-              </div>
+              </AnimatedGrid>
             </CardContent>
             {/* Load More Button */}
             {visibleMeals < filteredMealRecords.length && (
               <CardFooter className="justify-center p-0">
-                <Button
-                  className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base"
+                <AnimatedButton
+                  className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base bg-gradient-to-b from-primary-300 to-primary-400 text-light font-light rounded-sm transition-colors hover:from-primary-400 hover:to-primary-500"
                   onClick={loadMore}
                 >
                   記録をもっと見る
-                </Button>
+                </AnimatedButton>
               </CardFooter>
             )}
           </Card>

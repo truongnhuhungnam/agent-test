@@ -1,6 +1,7 @@
+import { AnimatedGrid, AnimatedGridItem } from "@/components/AnimatedGrid"
+import AnimatedButton from "@/components/AnimatedButton"
 import BodyWeightChart from "@/components/BodyWeightChart"
 import PageTransition from "@/components/PageTransition"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { bodyRecords, diaryEntries, exerciseRecords } from "@/data/mockData"
 import { useState } from "react"
@@ -169,32 +170,31 @@ const MyRecordPage = () => {
               </h3>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <AnimatedGrid className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {visibleEntries.map((entry) => (
-                  <div
-                    key={entry.id}
-                    className="p-3 pb-6 space-y-2 border-2 border-gray-300 lg:p-4 lg:pb-10"
-                  >
-                    <p className="text-base lg:text-[18px] font-inter leading-[20px] lg:leading-[22px] tracking-[.09px]">
-                      {entry.date}
-                      <span className="block">{entry.time}</span>
-                    </p>
-                    <p className="text-xs leading-[15px] lg:leading-[17px] tracking-[.06px] whitespace-pre-line line-clamp-[7]">
-                      {entry.content}
-                    </p>
-                  </div>
+                  <AnimatedGridItem key={entry.id}>
+                    <div className="p-3 pb-6 space-y-2 border-2 border-gray-300 lg:p-4 lg:pb-10">
+                      <p className="text-base lg:text-[18px] font-inter leading-[20px] lg:leading-[22px] tracking-[.09px]">
+                        {entry.date}
+                        <span className="block">{entry.time}</span>
+                      </p>
+                      <p className="text-xs leading-[15px] lg:leading-[17px] tracking-[.06px] whitespace-pre-line line-clamp-[7]">
+                        {entry.content}
+                      </p>
+                    </div>
+                  </AnimatedGridItem>
                 ))}
-              </div>
+              </AnimatedGrid>
             </CardContent>
             {/* Load More Button */}
             {visibleDiaryEntries < diaryEntries.length && (
               <CardFooter className="justify-center px-0 pt-4 lg:pt-6">
-                <Button
-                  className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base"
+                <AnimatedButton
+                  className="px-1 py-3 h-12 lg:h-14 w-[240px] lg:w-[296px] text-sm lg:text-base bg-gradient-to-b from-primary-300 to-primary-400 text-light font-light rounded-sm transition-colors hover:from-primary-400 hover:to-primary-500"
                   onClick={loadMore}
                 >
                   自分の日記をもっと見る
-                </Button>
+                </AnimatedButton>
               </CardFooter>
             )}
           </Card>
