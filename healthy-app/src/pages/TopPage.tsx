@@ -55,31 +55,55 @@ const TopPage = () => {
         </Card>
       </div>
 
-      <div className="px-6 py-8">
-        {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-4 mb-12 lg:grid-cols-4">
-          <Button className="h-20 text-lg font-medium bg-primary-300 hover:bg-primary-400 text-dark-600">
-            <div className="text-center">
-              <div className="mb-1 text-2xl">📊</div>
-              <div>体重グラフ</div>
+      {/* Action Buttons */}
+      <div className="p-6">
+        <div className="flex justify-center gap-16 mb-8">
+          <Button variant="hexagon">
+            <div className="relative flex flex-col items-center z-[1]">
+              <div className="mb-1 text-2xl">
+                <img
+                  src="src/assets/icons/icon_knife.svg"
+                  alt=""
+                  className="size-[56px]"
+                />
+              </div>
+              <span className="text-xl leading-[24px]">Morning</span>
             </div>
           </Button>
-          <Button className="h-20 text-lg font-medium bg-primary-400 hover:bg-primary-500 text-light">
-            <div className="text-center">
-              <div className="mb-1 text-2xl">🍽️</div>
-              <div>食事記録</div>
+          <Button variant="hexagon">
+            <div className="relative flex flex-col items-center z-[1]">
+              <div className="mb-1 text-2xl">
+                <img
+                  src="src/assets/icons/icon_knife.svg"
+                  alt=""
+                  className="size-[56px]"
+                />
+              </div>
+              <span className="text-xl leading-[24px]">Lunch</span>
             </div>
           </Button>
-          <Button className="h-20 text-lg font-medium bg-primary-500 hover:bg-primary-400 text-light">
-            <div className="text-center">
-              <div className="mb-1 text-2xl">🏃</div>
-              <div>運動記録</div>
+          <Button variant="hexagon">
+            <div className="relative flex flex-col items-center z-[1]">
+              <div className="mb-1 text-2xl">
+                <img
+                  src="src/assets/icons/icon_knife.svg"
+                  alt=""
+                  className="size-[56px]"
+                />
+              </div>
+              <span className="text-xl leading-[24px]">Dinner</span>
             </div>
           </Button>
-          <Button className="h-20 text-lg font-medium bg-primary-300 hover:bg-primary-400 text-dark-600">
-            <div className="text-center">
-              <div className="mb-1 text-2xl">📝</div>
-              <div>日記</div>
+          <Button variant="hexagon">
+            <div className="relative flex flex-col items-center z-[1]">
+              <div className="mb-1 text-2xl">
+                <img
+                  src="src/assets/icons/icon_cup.svg"
+                  alt=""
+                  className="size-[56px]"
+                />
+              </div>
+              <span className="text-xl leading-[24px]">Snack</span>
             </div>
           </Button>
         </div>
