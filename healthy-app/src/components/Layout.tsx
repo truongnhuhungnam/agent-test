@@ -91,8 +91,8 @@ const Layout = () => {
     <div className="min-h-screen">
       {/* Header */}
       <header className="bg-dark-500 fixed top-0 left-0 right-0 z-[50] shadow-[0_3px_6px_rgba(0,0,0,0.1608)]">
-        <div className="max-w-5xl px-8 mx-auto">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-5xl px-4 mx-auto lg:px-8">
+          <div className="flex items-center justify-between h-12 lg:h-16">
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="transition-all hover:opacity-80">
@@ -100,7 +100,7 @@ const Layout = () => {
                   <img
                     src="src/assets/logo.svg"
                     alt="Healthy"
-                    className="w-[144px] h-[64px]"
+                    className="w-[100px] lg:w-[144px] h-[44px] lg:h-[64px]"
                   />
                 </h1>
               </Link>
@@ -108,64 +108,67 @@ const Layout = () => {
 
             {/* Navigation */}
             <nav className="flex items-center">
-              {menus.map((menu) => (
-                <Link
-                  key={menu.id}
-                  to={menu.path}
-                  className={`flex items-center pl-2 pr-4 py-2 text-base font-light transition-colors w-40 ${
-                    isActive(menu.path)
-                      ? "text-primary-400"
-                      : "text-light hover:text-primary-400"
-                  }`}
-                >
-                  <div className="relative">
-                    <img
-                      src={menu.icon}
-                      alt={menu.name}
-                      className="size- mr-[8px]"
-                    />
-                    {menu.notification && (
-                      <Badge className="absolute top-0 right-0">
-                        {menu.notification}
-                      </Badge>
-                    )}
-                  </div>
-                  {menu.name}
-                </Link>
-              ))}
+              {/* Desktop Navigation */}
+              <div className="items-center hidden md:flex">
+                {menus.map((menu) => (
+                  <Link
+                    key={menu.id}
+                    to={menu.path}
+                    className={`flex items-center pl-2 pr-4 py-2 text-sm lg:text-base font-light transition-colors w-32 lg:w-40 ${
+                      isActive(menu.path)
+                        ? "text-primary-400"
+                        : "text-light hover:text-primary-400"
+                    }`}
+                  >
+                    <div className="relative">
+                      <img
+                        src={menu.icon}
+                        alt={menu.name}
+                        className="size-5 lg:size-6 mr-[6px] lg:mr-[8px]"
+                      />
+                      {menu.notification && (
+                        <Badge className="absolute text-xs -top-1 -right-1">
+                          {menu.notification}
+                        </Badge>
+                      )}
+                    </div>
+                    <span className="hidden lg:inline">{menu.name}</span>
+                  </Link>
+                ))}
+              </div>
 
               {/* Menu button with dropdown */}
-              <div className="relative ml-4" ref={menuRef}>
+              <div className="relative ml-2 lg:ml-4" ref={menuRef}>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="p-0 hover:bg-primary-400/5"
+                  className="p-1 lg:p-2 hover:bg-primary-400/5"
                   onClick={toggleMenu}
                 >
                   {isMenuOpen ? (
                     <img
                       src="/icons/icon_close.svg"
                       alt="Menu"
-                      className="size-"
+                      className="size-5 lg:size-6"
                     />
                   ) : (
                     <img
                       src="/icons/icon_menu.svg"
                       alt="Menu"
-                      className="size-"
+                      className="size-5 lg:size-6"
                     />
                   )}
                 </Button>
 
                 {/* Dropdown Menu */}
                 {isMenuOpen && (
-                  <div className="absolute right-0 top-full w-[280px] bg-gray-400 z-50">
+                  <div className="absolute right-0 top-full w-[240px] lg:w-[280px] bg-gray-400 z-50 hidden md:block">
                     <div>
                       {dropdownMenus.map((menu) => (
                         <Link
                           key={menu.id}
                           to={menu.path}
-                          className="flex items-center px-8 py-[23px] text-lg font-light text-light border-t border-b hover:bg-dark-600/25 transition-colors border-t-light/15 border-b-dark-600/25 last:border-b-0"
+                          className="flex items-center px-6 lg:px-8 py-[18px] lg:py-[23px] text-base lg:text-lg font-light text-light border-t border-b hover:bg-dark-600/25 transition-colors border-t-light/15 border-b-dark-600/25 last:border-b-0"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {menu.name}
@@ -190,14 +193,14 @@ const Layout = () => {
               <Link
                 key={menu.id}
                 to={menu.path}
-                className={`flex items-center px-3 py-2 text-base font-medium transition-colors ${
+                className={`flex items-center px-3 py-2 text-sm font-medium transition-colors ${
                   isActive(menu.path)
                     ? "text-primary-300 bg-dark-500"
                     : "text-light hover:text-primary-300 hover:bg-dark-500"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <img src={menu.icon} alt={menu.name} className="mr-3 size-6" />
+                <img src={menu.icon} alt={menu.name} className="mr-3 size-5" />
                 {menu.name}
               </Link>
             ))}
@@ -208,7 +211,7 @@ const Layout = () => {
                 <Link
                   key={menu.id}
                   to={menu.path}
-                  className="flex items-center px-3 py-2 text-base font-medium transition-colors text-light hover:text-primary-300 hover:bg-dark-500"
+                  className="flex items-center px-3 py-2 text-sm font-medium transition-colors text-light hover:text-primary-300 hover:bg-dark-500"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {menu.name}
@@ -220,30 +223,31 @@ const Layout = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 mt-16">
+      <main className="flex-1 mt-12 lg:mt-16">
         <Outlet />
       </main>
 
-      {/* Footer */}
+      {/* Scroll to top button */}
       <div
-        className="fixed z-50 transition-opacity cursor-pointer bottom-1/3 right-16 hover:opacity-80"
+        className="fixed z-50 transition-opacity cursor-pointer bottom-8 lg:bottom-1/3 right-4 lg:right-16 hover:opacity-80"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <img
           src="src/assets/icons/to_top.svg"
           alt="Scroll to top"
-          className="size-12"
+          className="size-10 lg:size-12"
         />
       </div>
 
-      <footer className="bg-dark-600 py-14">
-        <div className="max-w-5xl px-8 mx-auto">
-          <div className="flex gap-[45px]">
+      {/* Footer */}
+      <footer className="py-8 bg-dark-600 lg:py-14">
+        <div className="max-w-5xl px-4 mx-auto lg:px-8">
+          <div className="flex flex-wrap gap-4 lg:gap-[45px]">
             {footerMenus.map((menu) => (
               <Link
                 key={menu.id}
                 to={menu.path}
-                className="text-light font-light hover:text-primary-300 transition-colors text-[11px] tracking-[.03px]"
+                className="text-light font-light hover:text-primary-300 transition-colors text-[10px] lg:text-[11px] tracking-[.03px]"
               >
                 {menu.name}
               </Link>
