@@ -1,0 +1,271 @@
+// Mock data for the healthy app
+
+export interface MealRecord {
+  id: string
+  date: string
+  time: string
+  image: string
+  type: "morning" | "lunch" | "dinner" | "snack"
+}
+
+export interface ExerciseRecord {
+  id: string
+  date: string
+  name: string
+  calories: number
+  duration: number // in minutes
+}
+
+export interface BodyRecord {
+  date: string
+  weight: number
+  bodyFat: number
+}
+
+export interface DiaryEntry {
+  id: string
+  date: string
+  content: string
+}
+
+export interface ColumnArticle {
+  id: string
+  title: string
+  image: string
+  date: string
+  tags: string[]
+}
+
+// Mock meal records
+export const mealRecords: MealRecord[] = [
+  {
+    id: "1",
+    date: "2021.05.17",
+    time: "18:00",
+    image: "/photo/m01.jpg",
+    type: "dinner",
+  },
+  {
+    id: "2",
+    date: "2021.05.17",
+    time: "12:00",
+    image: "/photo/l01.jpg",
+    type: "lunch",
+  },
+  {
+    id: "3",
+    date: "2021.05.17",
+    time: "08:00",
+    image: "/photo/m02.jpg",
+    type: "morning",
+  },
+  {
+    id: "4",
+    date: "2021.05.16",
+    time: "18:00",
+    image: "/photo/l02.jpg",
+    type: "dinner",
+  },
+  {
+    id: "5",
+    date: "2021.05.16",
+    time: "12:00",
+    image: "/photo/m03.jpg",
+    type: "lunch",
+  },
+  {
+    id: "6",
+    date: "2021.05.16",
+    time: "08:00",
+    image: "/photo/l03.jpg",
+    type: "morning",
+  },
+  {
+    id: "7",
+    date: "2021.05.15",
+    time: "18:00",
+    image: "/photo/d01.jpg",
+    type: "dinner",
+  },
+  {
+    id: "8",
+    date: "2021.05.15",
+    time: "12:00",
+    image: "/photo/d02.jpg",
+    type: "lunch",
+  },
+]
+
+// Mock exercise records
+export const exerciseRecords: ExerciseRecord[] = [
+  {
+    id: "1",
+    date: "2021.05.21",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "2",
+    date: "2021.05.21",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "3",
+    date: "2021.05.20",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "4",
+    date: "2021.05.20",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "5",
+    date: "2021.05.19",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "6",
+    date: "2021.05.19",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "7",
+    date: "2021.05.18",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+  {
+    id: "8",
+    date: "2021.05.18",
+    name: "家事全般（立位・軽い）",
+    calories: 26,
+    duration: 10,
+  },
+]
+
+// Mock body records for charts
+export const bodyRecords: BodyRecord[] = [
+  { date: "6月", weight: 62.0, bodyFat: 62.0 },
+  { date: "7月", weight: 61.8, bodyFat: 59.8 },
+  { date: "8月", weight: 47.5, bodyFat: 51.5 },
+  { date: "9月", weight: 54.2, bodyFat: 50.2 },
+  { date: "10月", weight: 51.0, bodyFat: 41.5 },
+  { date: "11月", weight: 46.0, bodyFat: 41.8 },
+  { date: "1月", weight: 51.2, bodyFat: 38.5 },
+  { date: "2月", weight: 44.2, bodyFat: 36.2 },
+  { date: "3月", weight: 40.2, bodyFat: 28.0 },
+  { date: "4月", weight: 37.8, bodyFat: 25.4 },
+  { date: "5月", weight: 40.2, bodyFat: 22.8 },
+]
+
+// Mock diary entries
+export const diaryEntries: DiaryEntry[] = [
+  {
+    id: "1",
+    date: "2021.05.21",
+    content:
+      "私の日記の記録が一部表示されます。\nテキストテキストテキストテキストテキストテキストテキストテキストテキスト...",
+  },
+  {
+    id: "2",
+    date: "2021.05.20",
+    content:
+      "私の日記の記録が一部表示されます。\nテキストテキストテキストテキストテキストテキストテキストテキストテキスト...",
+  },
+  {
+    id: "3",
+    date: "2021.05.19",
+    content:
+      "私の日記の記録が一部表示されます。\nテキストテキストテキストテキストテキストテキストテキストテキストテキスト...",
+  },
+  {
+    id: "4",
+    date: "2021.05.18",
+    content:
+      "私の日記の記録が一部表示されます。\nテキストテキストテキストテキストテキストテキストテキストテキストテキスト...",
+  },
+]
+
+// Mock column articles
+export const columnArticles: ColumnArticle[] = [
+  {
+    id: "1",
+    title: "魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリット",
+    image: "/photo/column-1.jpg",
+    date: "2021.05.17",
+    tags: ["魚料理", "和食", "DHA"],
+  },
+  {
+    id: "2",
+    title: "野菜を食べて健康的な生活を送ろう！野菜の栄養と効果的な摂取方法",
+    image: "/photo/column-2.jpg",
+    date: "2021.05.16",
+    tags: ["野菜", "栄養", "ビタミン"],
+  },
+  {
+    id: "3",
+    title: "適度な運動で健康維持！無理なく続けられる運動習慣のコツ",
+    image: "/photo/column-3.jpg",
+    date: "2021.05.15",
+    tags: ["運動", "健康", "フィットネス"],
+  },
+  {
+    id: "4",
+    title: "良質な睡眠で疲労回復！睡眠の質を向上させる方法",
+    image: "/photo/column-4.jpg",
+    date: "2021.05.14",
+    tags: ["睡眠", "疲労回復", "健康"],
+  },
+  {
+    id: "5",
+    title: "水分補給の重要性！正しい水分摂取で健康をサポート",
+    image: "/photo/column-5.jpg",
+    date: "2021.05.13",
+    tags: ["水分補給", "健康", "デトックス"],
+  },
+  {
+    id: "6",
+    title: "ストレス解消法で心も体も健康に！効果的なリラックス方法",
+    image: "/photo/column-6.jpg",
+    date: "2021.05.12",
+    tags: ["ストレス", "リラックス", "メンタルヘルス"],
+  },
+  {
+    id: "7",
+    title: "腸内環境を整えて免疫力アップ！発酵食品の効果と取り入れ方",
+    image: "/photo/column-7.jpg",
+    date: "2021.05.11",
+    tags: ["腸内環境", "発酵食品", "免疫力"],
+  },
+  {
+    id: "8",
+    title: "アンチエイジングに効果的な食材！若々しさを保つ食事のコツ",
+    image: "/photo/column-8.jpg",
+    date: "2021.05.10",
+    tags: ["アンチエイジング", "美容", "栄養"],
+  },
+]
+
+// Achievement rate data for top page
+export const achievementData = [
+  { month: "6月", rate: 75 },
+  { month: "7月", rate: 82 },
+  { month: "8月", rate: 68 },
+  { month: "9月", rate: 90 },
+  { month: "10月", rate: 85 },
+  { month: "11月", rate: 78 },
+  { month: "12月", rate: 88 },
+]
