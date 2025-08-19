@@ -84,17 +84,19 @@ const Layout = () => {
     <div className="min-h-screen">
       {/* Header */}
       <header className="relative bg-dark-600">
-        <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="max-w-5xl px-8 mx-auto">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <h1>
-                <img
-                  src="src/assets/logo.svg"
-                  alt="Healthy"
-                  className="w-[144px] h-[64px]"
-                />
-              </h1>
+              <Link to="/" className="transition-all hover:opacity-80">
+                <h1>
+                  <img
+                    src="src/assets/logo.svg"
+                    alt="Healthy"
+                    className="w-[144px] h-[64px]"
+                  />
+                </h1>
+              </Link>
             </div>
 
             {/* Navigation */}
@@ -181,11 +183,7 @@ const Layout = () => {
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <img
-                  src={menu.icon}
-                  alt={menu.name}
-                  className="w-[24px] h-[24px] mr-3"
-                />
+                <img src={menu.icon} alt={menu.name} className="mr-3 size-6" />
                 {menu.name}
               </Link>
             ))}
@@ -225,7 +223,7 @@ const Layout = () => {
       </div>
 
       <footer className="bg-dark-600 py-14">
-        <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="max-w-5xl px-8 mx-auto">
           <div className="flex gap-[45px]">
             {footerMenus.map((menu) => (
               <Link

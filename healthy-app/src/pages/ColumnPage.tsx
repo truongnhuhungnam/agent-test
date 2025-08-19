@@ -12,43 +12,37 @@ const ColumnPage = () => {
 
   return (
     <div className="min-h-screen py-8">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-light mb-2">COLUMN</h1>
-          <p className="text-gray-400">健康に関するコラムをお届けします</p>
-        </div>
-
+      <div className="max-w-5xl px-8 mx-auto">
         {/* Recommended Articles */}
         <div className="mb-12">
-          <h2 className="text-xl font-semibold text-light mb-6">
+          <h2 className="mb-6 text-xl font-semibold text-light">
             おすすめ記事
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {columnArticles.slice(0, 3).map((article) => (
               <Card
                 key={article.id}
-                className="bg-dark-600 border-gray-400/20 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                className="overflow-hidden transition-shadow cursor-pointer bg-dark-600 border-gray-400/20 hover:shadow-lg"
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="overflow-hidden aspect-video">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform"
+                    className="object-cover w-full h-full transition-transform hover:scale-105"
                   />
                 </div>
                 <CardContent className="p-4">
-                  <div className="text-sm text-gray-400 mb-2">
+                  <div className="mb-2 text-sm text-gray-400">
                     {article.date}
                   </div>
-                  <h3 className="text-light font-medium mb-3 line-clamp-2 leading-relaxed">
+                  <h3 className="mb-3 font-medium leading-relaxed text-light line-clamp-2">
                     {article.title}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {article.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-primary-300/20 text-primary-300 text-xs rounded-full"
+                        className="px-2 py-1 text-xs rounded-full bg-primary-300/20 text-primary-300"
                       >
                         #{tag}
                       </span>
@@ -62,40 +56,40 @@ const ColumnPage = () => {
 
         {/* All Articles */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-light mb-6">
+          <h2 className="mb-6 text-xl font-semibold text-light">
             すべての記事
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {columnArticles.slice(0, visibleArticles).map((article) => (
               <Card
                 key={article.id}
-                className="bg-dark-600 border-gray-400/20 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                className="overflow-hidden transition-shadow cursor-pointer bg-dark-600 border-gray-400/20 hover:shadow-lg"
               >
-                <div className="aspect-square overflow-hidden">
+                <div className="overflow-hidden aspect-square">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform"
+                    className="object-cover w-full h-full transition-transform hover:scale-105"
                   />
                 </div>
                 <CardContent className="p-4">
-                  <div className="text-sm text-gray-400 mb-2">
+                  <div className="mb-2 text-sm text-gray-400">
                     {article.date}
                   </div>
-                  <h3 className="text-light font-medium mb-3 line-clamp-3 text-sm leading-relaxed">
+                  <h3 className="mb-3 text-sm font-medium leading-relaxed text-light line-clamp-3">
                     {article.title}
                   </h3>
                   <div className="flex flex-wrap gap-1">
                     {article.tags.slice(0, 2).map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-primary-300/20 text-primary-300 text-xs rounded-full"
+                        className="px-2 py-1 text-xs rounded-full bg-primary-300/20 text-primary-300"
                       >
                         #{tag}
                       </span>
                     ))}
                     {article.tags.length > 2 && (
-                      <span className="text-gray-400 text-xs">
+                      <span className="text-xs text-gray-400">
                         +{article.tags.length - 2}
                       </span>
                     )}
@@ -111,7 +105,7 @@ const ColumnPage = () => {
           <div className="text-center">
             <Button
               onClick={loadMore}
-              className="bg-primary-300 hover:bg-primary-400 text-dark-600 font-medium px-8 py-3"
+              className="px-8 py-3 font-medium bg-primary-300 hover:bg-primary-400 text-dark-600"
             >
               記事をもっと見る
             </Button>
@@ -120,8 +114,8 @@ const ColumnPage = () => {
 
         {/* Categories */}
         <div className="mt-16">
-          <h2 className="text-xl font-semibold text-light mb-6">カテゴリー</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <h2 className="mb-6 text-xl font-semibold text-light">カテゴリー</h2>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
             {[
               { name: "栄養・食事", count: 12, color: "bg-primary-300" },
               { name: "運動・フィットネス", count: 8, color: "bg-primary-400" },
@@ -136,17 +130,17 @@ const ColumnPage = () => {
             ].map((category, index) => (
               <Card
                 key={index}
-                className="bg-dark-600 border-gray-400/20 hover:shadow-lg transition-shadow cursor-pointer"
+                className="transition-shadow cursor-pointer bg-dark-600 border-gray-400/20 hover:shadow-lg"
               >
                 <CardContent className="p-4 text-center">
                   <div
                     className={`w-12 h-12 ${category.color} rounded-full mx-auto mb-3 flex items-center justify-center`}
                   >
-                    <span className="text-dark-600 font-bold text-lg">
+                    <span className="text-lg font-bold text-dark-600">
                       {category.count}
                     </span>
                   </div>
-                  <h3 className="text-light font-medium text-sm">
+                  <h3 className="text-sm font-medium text-light">
                     {category.name}
                   </h3>
                 </CardContent>

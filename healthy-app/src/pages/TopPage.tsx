@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { bodyRecords, mealRecords } from "@/data/mockData"
 import CircularProgress from "@/components/CircularProgress"
 import BodyWeightChart from "@/components/BodyWeightChart"
+import { Link } from "react-router-dom"
 
 const TopPage = () => {
   // Get recent meal records (last 8)
@@ -13,7 +14,7 @@ const TopPage = () => {
       {/* Hero Section */}
       <div className="flex">
         {/* Achievement Rate Chart */}
-        <Card className="p-0 w-[42.188vw] h-[312px] overflow-hidden rounded-none border-0 relative">
+        <Card className="p-0 w-[42.188vw] h-[312px] overflow-hidden rounded-none border-0 relative shadow-none">
           <CardContent className="h-full p-0">
             {/* Background Image */}
             <div
@@ -48,7 +49,7 @@ const TopPage = () => {
         </Card>
 
         {/* Body Weight Chart */}
-        <Card className="p-0 bg-dark-600 w-[57.812vw] h-[312px] overflow-hidden rounded-none border-0">
+        <Card className="p-0 bg-dark-500 w-[57.812vw] h-[312px] overflow-hidden rounded-none border-0 shadow-none">
           <CardContent className="h-full px-16 py-3">
             <BodyWeightChart data={bodyRecords} />
           </CardContent>
@@ -67,7 +68,7 @@ const TopPage = () => {
                   className="size-[56px]"
                 />
               </div>
-              <span className="text-xl leading-[24px]">Morning</span>
+              <span className="text-xl leading-6">Morning</span>
             </div>
           </Button>
           <Button variant="hexagon">
@@ -79,7 +80,7 @@ const TopPage = () => {
                   className="size-[56px]"
                 />
               </div>
-              <span className="text-xl leading-[24px]">Lunch</span>
+              <span className="text-xl leading-6">Lunch</span>
             </div>
           </Button>
           <Button variant="hexagon">
@@ -91,7 +92,7 @@ const TopPage = () => {
                   className="size-[56px]"
                 />
               </div>
-              <span className="text-xl leading-[24px]">Dinner</span>
+              <span className="text-xl leading-6">Dinner</span>
             </div>
           </Button>
           <Button variant="hexagon">
@@ -103,14 +104,14 @@ const TopPage = () => {
                   className="size-[56px]"
                 />
               </div>
-              <span className="text-xl leading-[24px]">Snack</span>
+              <span className="text-xl leading-6">Snack</span>
             </div>
           </Button>
         </div>
       </div>
 
       {/* Meal History */}
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl px-8 mx-auto">
         <Card className="p-0 border-0 rounded-none shadow-none gap-7">
           <CardContent className="p-0">
             <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
@@ -140,7 +141,7 @@ const TopPage = () => {
           </CardContent>
           <CardFooter className="justify-center p-0">
             <Button className="px-1 py-3 h-14 w-[296px]">
-              記録をもっと見る
+              <Link to="/record">記録をもっと見る</Link>
             </Button>
           </CardFooter>
         </Card>

@@ -1,183 +1,182 @@
-import { Card, CardContent } from "@/components/ui/card"
+import BodyWeightChart from "@/components/BodyWeightChart"
 import { Button } from "@/components/ui/button"
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts"
-import { bodyRecords, exerciseRecords, diaryEntries } from "@/data/mockData"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { bodyRecords, diaryEntries, exerciseRecords } from "@/data/mockData"
+import { Link } from "react-router-dom"
 
 const MyRecordPage = () => {
   return (
-    <div className="min-h-screen py-8">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-light mb-2">MY RECORD</h1>
-        </div>
-
+    <div className="min-h-screen pb-16 pt-14">
+      <div className="max-w-5xl px-8 mx-auto space-y-14">
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <Button className="h-20 bg-primary-300 hover:bg-primary-400 text-dark-600 font-medium text-lg">
-            <div className="text-center">
-              <div className="text-2xl mb-1">📊</div>
-              <div>BODY RECORD</div>
+        <div className="grid grid-cols-2 gap-12 lg:grid-cols-3">
+          <div
+            className="p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80"
+            onClick={() => {
+              const el = document.getElementById("body-record")
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
+            <div className="relative bg-dark-500">
+              <img
+                src="src/assets/photo/MyRecommend-1.jpg"
+                alt="BODY RECORD"
+                className="aspect-square object-cover size-[240px] mix-blend-luminosity opacity-25 object-left"
+              />
+              <div className="text-center space-y-[11px] absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+                <h3 className="font-inter text-[25px] leading-[30px] tracking-[.13px] text-primary-300">
+                  BODY RECORD
+                </h3>
+                <p className="text-sm font-light text-light bg-primary-400 p-[2px] w-[160px] text-center">
+                  自分のカラダの記録
+                </p>
+              </div>
             </div>
-          </Button>
-          <Button className="h-20 bg-primary-400 hover:bg-primary-500 text-light font-medium text-lg">
-            <div className="text-center">
-              <div className="text-2xl mb-1">🏃</div>
-              <div>MY EXERCISE</div>
+          </div>
+          <div
+            className="p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80"
+            onClick={() => {
+              const el = document.getElementById("my-exercise")
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
+            <div className="relative bg-dark-500">
+              <img
+                src="src/assets/photo/MyRecommend-2.jpg"
+                alt="MY EXERCISE"
+                className="aspect-square object-cover size-[240px] mix-blend-luminosity opacity-25 object-left"
+              />
+              <div className="text-center space-y-[11px] absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+                <h3 className="font-inter text-[25px] leading-[30px] tracking-[.13px] text-primary-300">
+                  MY EXERCISE
+                </h3>
+                <p className="text-sm font-light text-light bg-primary-400 p-[2px] w-[160px] text-center">
+                  自分の運動の記録
+                </p>
+              </div>
             </div>
-          </Button>
-          <Button className="h-20 bg-primary-500 hover:bg-primary-400 text-light font-medium text-lg">
-            <div className="text-center">
-              <div className="text-2xl mb-1">📝</div>
-              <div>MY DIARY</div>
+          </div>
+          <div
+            className="p-6 transition-opacity cursor-pointer bg-primary-300 hover:opacity-80"
+            onClick={() => {
+              const el = document.getElementById("my-diary")
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
+            <div className="relative bg-dark-500">
+              <img
+                src="src/assets/photo/MyRecommend-3.jpg"
+                alt="MY DIARY"
+                className="aspect-square object-cover size-[240px] mix-blend-luminosity opacity-25"
+              />
+              <div className="text-center space-y-[11px] absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+                <h3 className="font-inter text-[25px] leading-[30px] tracking-[.13px] text-primary-300">
+                  MY DIARY
+                </h3>
+                <p className="text-sm font-light text-light bg-primary-400 p-[2px] w-[160px] text-center">
+                  自分の日記
+                </p>
+              </div>
             </div>
-          </Button>
-          <Button className="h-20 bg-primary-300 hover:bg-primary-400 text-dark-600 font-medium text-lg">
-            <div className="text-center">
-              <div className="text-2xl mb-1">⚖️</div>
-              <div>体重グラフ</div>
-            </div>
-          </Button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Body Fat Percentage Chart */}
-          <Card className="bg-dark-600 border-gray-400/20">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-light">
-                  BODY RECORD
-                </h2>
-                <div className="text-sm text-gray-400">2021.05.21</div>
-              </div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-4">
-                  <Button
-                    size="sm"
-                    className="bg-primary-300 hover:bg-primary-400 text-dark-600 font-medium"
-                  >
-                    日
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary-300 text-primary-300 hover:bg-primary-300 hover:text-dark-600"
-                  >
-                    週
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary-300 text-primary-300 hover:bg-primary-300 hover:text-dark-600"
-                  >
-                    月
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary-300 text-primary-300 hover:bg-primary-300 hover:text-dark-600"
-                  >
-                    年
-                  </Button>
-                </div>
-              </div>
-              <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={bodyRecords}>
-                    <XAxis
-                      dataKey="date"
-                      axisLine={false}
-                      tickLine={false}
-                      tick={{ fill: "#FFFFFF", fontSize: 12 }}
-                    />
-                    <YAxis
-                      domain={["dataMin - 2", "dataMax + 2"]}
-                      axisLine={false}
-                      tickLine={false}
-                      tick={{ fill: "#FFFFFF", fontSize: 12 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="weight"
-                      stroke="#FFCC21"
-                      strokeWidth={3}
-                      dot={{ fill: "#FFCC21", strokeWidth: 2, r: 5 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="bodyFat"
-                      stroke="#8FE9D4"
-                      strokeWidth={3}
-                      dot={{ fill: "#8FE9D4", strokeWidth: 2, r: 5 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Body Fat Percentage Chart */}
+        <Card
+          id="body-record"
+          className="p-0 bg-dark-500 h-[304px] overflow-hidden rounded-none border-0 gap-0 shadow-none"
+        >
+          <CardHeader className="flex pt-6 pb-0 pl-6">
+            <h3 className="text-light font-inter text-[15px] leading-[18px] tracking-[.15px] w-[96px]">
+              BODY RECORD
+            </h3>
+            <p className="text-light font-inter text-[22px] leading-[27px] tracking-[.11px]">
+              2021.05.21
+            </p>
+          </CardHeader>
+          <CardContent className="h-[195px] px-11">
+            <BodyWeightChart data={bodyRecords} sort />
+          </CardContent>
+        </Card>
 
-          {/* Exercise Records */}
-          <Card className="bg-dark-600 border-gray-400/20">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold text-light">
-                  MY EXERCISE
-                </h2>
-                <div className="text-sm text-gray-400">2021.05</div>
-              </div>
-              <div className="space-y-4 max-h-64 overflow-y-auto">
-                {exerciseRecords.map((exercise) => (
-                  <div
-                    key={exercise.id}
-                    className="flex items-center justify-between py-3 border-b border-gray-400/20"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className="w-2 h-2 bg-primary-300 rounded-full"></div>
-                      <div>
-                        <div className="text-light font-medium">
-                          {exercise.name}
-                        </div>
-                        <div className="text-sm text-gray-400">
-                          {exercise.date}
-                        </div>
+        {/* Exercise Records */}
+        <Card
+          id="my-exercise"
+          className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none bg-dark-500"
+        >
+          <CardHeader className="flex pt-4 pb-0 pl-6">
+            <h3 className="text-light font-inter text-[15px] leading-[18px] tracking-[.15px] w-[96px]">
+              MY EXERCISE
+            </h3>
+            <p className="text-light font-inter text-[22px] leading-[27px] tracking-[.11px]">
+              2021.05.21
+            </p>
+          </CardHeader>
+          <CardContent className="px-6 pt-1 pb-4">
+            <div className="grid grid-cols-2 overflow-y-auto gap-x-10 max-h-48">
+              {exerciseRecords.map((exercise) => (
+                <div
+                  key={exercise.id}
+                  className="flex items-center justify-between py-[2px] pr-3 border-b border-gray-400"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="rounded-full size-[7px] bg-light"></div>
+                    <div>
+                      <div className="font-light text-[15px] leading-[22px] tracking-[.08px] text-light">
+                        {exercise.name}
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-primary-300 font-semibold">
+                      <div className="text-[15px] leading-[18px] tracking-[.08px] text-primary-300">
                         {exercise.calories}kcal
-                      </div>
-                      <div className="text-sm text-gray-400">
-                        {exercise.duration}min
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                  <div className="text-right">
+                    <div className="text-[18px] leading-[22px] tracking-[.09px] font-inter text-primary-300">
+                      {exercise.duration}min
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Diary Section */}
-        <Card className="bg-dark-600 border-gray-400/20 mt-8">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-light">MY DIARY</h2>
-              <div className="text-sm text-gray-400">2021.05</div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card
+          id="my-diary"
+          className="gap-0 p-0 overflow-hidden border-0 rounded-none shadow-none text-dark-500"
+        >
+          <CardHeader className="flex pt-6 pb-0 pl-6">
+            <h3 className="font-inter text-[22px] leading-[27px] tracking-[.151px]">
+              MY DIARY
+            </h3>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
               {diaryEntries.map((entry) => (
-                <div
-                  key={entry.id}
-                  className="border-l-4 border-primary-300 pl-4"
-                >
-                  <div className="text-sm text-gray-400 mb-2">{entry.date}</div>
-                  <p className="text-light text-sm leading-relaxed whitespace-pre-line">
+                <div key={entry.id} className="p-4 border-2 border-gray-300">
+                  <p className="text-[18px] font-inter leading-[22px] tracking-[.09px]">
+                    {entry.date}
+                    <span className="block">{entry.time}</span>
+                  </p>
+                  <p className="text-xs leading-[17px] tracking-[.06px] whitespace-pre-line line-clamp-[7]">
                     {entry.content}
                   </p>
                 </div>
               ))}
             </div>
           </CardContent>
+          <CardFooter className="justify-center pt-6">
+            <Button className="px-1 py-3 h-14 w-[296px]" asChild>
+              <Link to="/">自分の日記をもっと見る</Link>
+            </Button>
+          </CardFooter>
         </Card>
       </div>
     </div>
