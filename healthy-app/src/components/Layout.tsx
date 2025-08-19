@@ -162,7 +162,7 @@ const Layout = () => {
 
                 {/* Dropdown Menu */}
                 {isMenuOpen && (
-                  <div className="absolute right-0 top-full w-[240px] lg:w-[280px] bg-gray-400 z-50 hidden md:block">
+                  <div className="absolute right-0 top-full w-[240px] lg:w-[280px] bg-gray-400 z-50 hidden lg:block">
                     <div>
                       {dropdownMenus.map((menu) => (
                         <Link

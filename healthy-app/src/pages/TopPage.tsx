@@ -32,14 +32,12 @@ const TopPage = () => {
       <div className="flex flex-col lg:flex-row">
         {/* Achievement Rate Chart */}
         <Card className="p-0 w-full lg:w-[42.188vw] h-[200px] lg:h-[312px] overflow-hidden rounded-none border-0 relative shadow-none">
-          <CardContent className="h-full p-0">
+          <CardContent className="h-full p-0 cover-primary after:bg-opacity-[99.88] after:mix-blend-soft-light">
             {/* Background Image */}
             <div
-              className="absolute inset-0 bg-center bg-cover filter brightness-200 saturate-150"
+              className="absolute inset-0 bg-center bg-cover"
               style={{
                 backgroundImage: "url(/photo/d01.jpg)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
               }}
             >
               {/* Dark overlay for better text readability */}
@@ -51,7 +49,7 @@ const TopPage = () => {
               <div className="mb-2 lg:mb-4">
                 {/* Animated Circular Progress */}
                 <div className="relative">
-                  <span className="text-base lg:text-lg font-normal text-light leading-[22px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
+                  <span className="text-base lg:text-lg font-normal text-light leading-[22px] absolute top-1/2 left-1/2 -translate-x-[45px] -translate-y-[10px] z-[1]">
                     05/21
                   </span>
                   <CircularProgress

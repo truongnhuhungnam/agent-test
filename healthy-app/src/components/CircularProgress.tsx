@@ -55,7 +55,7 @@ const CircularProgress = ({
           strokeDasharray={strokeDasharray}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          className="transition-all duration-2000 ease-out"
+          className="transition-all ease-out duration-2000"
           style={{
             filter: "drop-shadow(0 0 6px rgba(255, 204, 33, 0.4))",
           }}
@@ -63,7 +63,7 @@ const CircularProgress = ({
       </svg>
 
       {/* Percentage text */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center translate-x-[30px]">
         <span className="text-white text-[25px] leading-[30px]">
           {Math.round(animatedPercentage)}%
         </span>
