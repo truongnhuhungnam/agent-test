@@ -53,6 +53,14 @@ body {
   font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', 'Meiryo', sans-serif;
 }
 
+.bg-linear-to-b-primary {
+  background: linear-gradient(
+    180deg,
+    var(--primary-300)
+    var(--primary-400) 0%,
+  );
+}
+
 .cover-primary {
   position: relative;
   background: linear-gradient(

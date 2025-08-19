@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { bodyRecords, mealRecords } from "@/data/mockData"
 import CircularProgress from "@/components/CircularProgress"
 import BodyWeightChart from "@/components/BodyWeightChart"
@@ -9,7 +9,7 @@ const TopPage = () => {
   const recentMeals = mealRecords.slice(0, 8)
 
   return (
-    <div className="min-h-screen">
+    <div className="pb-16">
       {/* Hero Section */}
       <div className="flex">
         {/* Achievement Rate Chart */}
@@ -107,37 +107,42 @@ const TopPage = () => {
             </div>
           </Button>
         </div>
+      </div>
 
-        {/* Meal History */}
-        <Card className="bg-dark-600 border-gray-400/20">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-light">食事の記録</h2>
-              <Button
-                variant="outline"
-                className="border-primary-300 text-primary-300 hover:bg-primary-300 hover:text-dark-600"
-              >
-                記録をもっと見る
-              </Button>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-8">
+      {/* Meal History */}
+      <div className="max-w-5xl mx-auto">
+        <Card className="p-0 border-0 rounded-none shadow-none gap-7">
+          <CardContent className="p-0">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
               {recentMeals.map((meal) => (
-                <div key={meal.id} className="text-center">
-                  <div className="mb-2 overflow-hidden rounded-lg aspect-square">
+                <div key={meal.id} className="relative text-center">
+                  <div className="overflow-hidden aspect-square">
                     <img
                       src={meal.image}
                       alt={`Meal ${meal.id}`}
-                      className="object-cover w-full h-full transition-transform cursor-pointer hover:scale-105"
+                      className="object-cover w-full h-full transition-all cursor-pointer hover:scale-105"
                     />
                   </div>
-                  <div className="text-xs text-gray-400">
-                    <div>{meal.date}</div>
-                    <div>{meal.time}</div>
+                  <div className="text-[15px] text-white bg-primary-300 font-inter absolute bottom-0 left-0 p-2">
+                    <span>
+                      {new Date(meal.date)
+                        .toLocaleDateString("en-US", {
+                          month: "2-digit",
+                          day: "2-digit",
+                        })
+                        .replace("/", ".")}
+                    </span>
+                    .<span className="capitalize">{meal.type}</span>
                   </div>
                 </div>
               ))}
             </div>
           </CardContent>
+          <CardFooter className="justify-center p-0">
+            <Button className="px-1 py-3 h-14 w-[296px]">
+              記録をもっと見る
+            </Button>
+          </CardFooter>
         </Card>
       </div>
     </div>

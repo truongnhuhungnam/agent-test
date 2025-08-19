@@ -83,9 +83,9 @@ const Layout = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-dark-600 relative">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <header className="relative bg-dark-600">
+        <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
               <h1>
@@ -191,12 +191,12 @@ const Layout = () => {
             ))}
 
             {/* Additional mobile menu items */}
-            <div className="border-t border-gray-400/20 pt-2 mt-2">
+            <div className="pt-2 mt-2 border-t border-gray-400/20">
               {dropdownMenus.map((menu) => (
                 <Link
                   key={menu.id}
                   to={menu.path}
-                  className="flex items-center px-3 py-2 text-base font-medium text-light hover:text-primary-300 hover:bg-dark-500 transition-colors"
+                  className="flex items-center px-3 py-2 text-base font-medium transition-colors text-light hover:text-primary-300 hover:bg-dark-500"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {menu.name}
@@ -213,8 +213,19 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
+      <div
+        className="fixed z-50 transition-opacity cursor-pointer bottom-1/2 right-16 hover:opacity-80"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <img
+          src="src/assets/icons/to_top.svg"
+          alt="Scroll to top"
+          className="size-12"
+        />
+      </div>
+
       <footer className="bg-dark-600 py-14">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
           <div className="flex gap-[45px]">
             {footerMenus.map((menu) => (
               <Link

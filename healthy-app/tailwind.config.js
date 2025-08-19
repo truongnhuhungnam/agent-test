@@ -8,6 +8,7 @@ export default {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+  safelist: [],
   theme: {
     container: {
       center: true,
@@ -83,6 +84,7 @@ export default {
         2000: "2000ms",
       },
       fontFamily: {
+        inter: ["Inter", "sans-serif"],
         hiragino: [
           "Hiragino Kaku Gothic Pro",
           "ヒラギノ角ゴ Pro W3",
