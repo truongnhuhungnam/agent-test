@@ -174,7 +174,7 @@ const MyRecordPage = () => {
           </CardContent>
           <CardFooter className="justify-center pt-6">
             <Button className="px-1 py-3 h-14 w-[296px]" asChild>
-              <Link to="/">自分の日記をもっと見る</Link>
+              <Link to="#">自分の日記をもっと見る</Link>
             </Button>
           </CardFooter>
         </Card>
