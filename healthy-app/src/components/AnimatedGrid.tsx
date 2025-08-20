@@ -48,7 +48,7 @@ const AnimatedGrid = ({ children, className = "" }: AnimatedGridProps) => {
 
 const AnimatedGridItem = ({ children }: { children: ReactNode }) => {
   return (
-    <motion.div variants={itemVariants} layout>
+    <motion.div variants={itemVariants as any} layout>
       {children}
     </motion.div>
   )
